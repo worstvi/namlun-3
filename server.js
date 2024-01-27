@@ -1,16 +1,25 @@
+// server.js
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = 3000;
 
 app.use(bodyParser.json());
 
-app.post('/select-activity', (req, res) => {
+app.post('/sendNotification', (req, res) => {
   const { activity } = req.body;
+
+  // Отправляем уведомление на почту
   sendEmailNotification(activity);
-  res.status(200).send('Activity selected successfully');
+
+  console.log(`Получено уведомление: Пользователь выбрал: ${activity}`);
+  res.json({ success: true });
+});
+
+app.listen(port, () => {
+  console.log(`Сервер запущен на порту ${port}`);
 });
 
 function sendEmailNotification(activity) {
@@ -25,19 +34,15 @@ function sendEmailNotification(activity) {
   const mailOptions = {
     from: 'namlunsasha@gmail.com',
     to: 'musasim@list.ru',
-    subject: 'User Activity Choice',
-    text: `User has chosen: ${activity}`,
+    subject: 'Уведомление от сайта',
+    text: `Пользователь выбрал: ${activity}`,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.error('Error sending email:', error);
+      console.error('Ошибка отправки почты:', error);
     } else {
-      console.log('Email sent:', info.response);
+      console.log('Уведомление отправлено:', info.response);
     }
   });
 }
-
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
-});
