@@ -1,51 +1,41 @@
-/* styles.css */
-
+/* CSS (styles.css) */
 body {
-  font-family: 'Arial', sans-serif;
   margin: 0;
-  padding: 0;
-  background-color: #F1E9E7;
-}
-
-.gallery {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 20px;
-}
-
-.gallery-item {
-  width: 300px;
-  margin: 20px;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
   background-color: #CDB1C8;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  font-family: 'Arial', sans-serif;
 }
 
-.gallery-item h2 {
+.container {
+  text-align: center;
+  background-color: #F1E9E7;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+h1 {
   color: #C7777A;
 }
 
-.gallery-item img {
-  max-width: 100%;
-  border-radius: 8px;
-  margin: 10px 0;
+.buttons {
+  margin-top: 20px;
 }
 
-.gallery-item button, .gallery-item a.button {
-  background-color: #EDB9AC;
-  padding: 8px 16px;
+.button {
+  padding: 10px 20px;
+  font-size: 1em;
+  margin: 0 10px;
+  cursor: pointer;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  color: #fff;
+  background-color: #C5BEB8;
   text-decoration: none;
-  transition: background-color 0.3s ease;
+  color: #ffffff;
 }
 
-.gallery-item button:hover, .gallery-item a.button:hover {
-  background-color: #C5BEB8;
+#noButton {
+  position: relative;
 }
